@@ -3,8 +3,8 @@ POST http://localhost:3001/user/register
 Content-Type: application/json
 
 {
-    "email": "helo@hello.com",
-    "password": "hellohello"
+    "email": "goodbye@email.com",
+    "password": "goodbyegoodbye"
 }
 
 ###
@@ -13,6 +13,25 @@ POST http://localhost:3001/user/login
 Content-Type: application/json
 
 {
-    "email": "hello@hello.com",
+    "email": "hello@email.com",
     "password": "hellohello"
 }
+
+###
+
+GET http://localhost:3001/questions
+
+###
+
+POST http://localhost:3001/questions
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGZlMTAxZTEyZWE0ZmNlY2U5ZTljMiIsImlhdCI6MTY1ODg0MTM5MCwiZXhwIjoxNjU4ODQ0OTkwfQ.jqlKXUiKsPKBaXHHZ7mXldOyOK1qmiG5tERGtdlCfJg
+Content-Type: application/json
+
+{
+    "title": "my title",
+    "body": "blahnah",
+    "isRead": false,
+    "isEdited": false,
+    "uid": "62dfe15ce12ea4fcece9e9c3"
+}
+
