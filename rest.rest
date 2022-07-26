@@ -1,0 +1,2 @@
+#CTRL+ALT+R
+GET http://localhost:3001/user
