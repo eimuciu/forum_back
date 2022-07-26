@@ -1,2 +1,18 @@
 #CTRL+ALT+R
-GET http://localhost:3001/user
+POST http://localhost:3001/user/register
+Content-Type: application/json
+
+{
+    "email": "helo@hello.com",
+    "password": "hellohello"
+}
+
+###
+
+POST http://localhost:3001/user/login
+Content-Type: application/json
+
+{
+    "email": "hello@hello.com",
+    "password": "hellohello"
+}
