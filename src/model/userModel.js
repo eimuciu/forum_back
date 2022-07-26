@@ -21,7 +21,7 @@ async function findUser(credentials) {
     console.log('findUser module error', err);
     throw new Error('findUser module error');
   } finally {
-    dbClient.close();
+    await dbClient.close();
   }
 }
 
@@ -40,7 +40,7 @@ async function addUser(credentials) {
     console.log('addUser module error', err);
     throw new Error('addUser module error');
   } finally {
-    dbClient.close();
+    await dbClient.close();
   }
 }
 

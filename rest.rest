@@ -24,7 +24,7 @@ GET http://localhost:3001/questions
 ###
 
 POST http://localhost:3001/questions
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGZlMTAxZTEyZWE0ZmNlY2U5ZTljMiIsImlhdCI6MTY1ODg0MTM5MCwiZXhwIjoxNjU4ODQ0OTkwfQ.jqlKXUiKsPKBaXHHZ7mXldOyOK1qmiG5tERGtdlCfJg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGZlMTAxZTEyZWE0ZmNlY2U5ZTljMiIsImlhdCI6MTY1ODg0OTQxNywiZXhwIjoxNjU4ODUzMDE3fQ.-A5Wp0HRYCNB3726GJefhb7nrikr58fz1Dy2X2TiBOQ
 Content-Type: application/json
 
 {
@@ -35,3 +35,21 @@ Content-Type: application/json
     "uid": "62dfe15ce12ea4fcece9e9c3"
 }
 
+###
+
+DELETE http://localhost:3001/questions/62e00b065dcb3096e9c44b36
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGZlMTAxZTEyZWE0ZmNlY2U5ZTljMiIsImlhdCI6MTY1ODg0OTQxNywiZXhwIjoxNjU4ODUzMDE3fQ.-A5Wp0HRYCNB3726GJefhb7nrikr58fz1Dy2X2TiBOQ
+
+###
+
+PUT http://localhost:3001/questions/62e00bb94c0b1ae77d25fd61
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGZlMTAxZTEyZWE0ZmNlY2U5ZTljMiIsImlhdCI6MTY1ODg0OTQxNywiZXhwIjoxNjU4ODUzMDE3fQ.-A5Wp0HRYCNB3726GJefhb7nrikr58fz1Dy2X2TiBOQ
+Content-Type: application/json
+
+{
+    "title": "Is Node difficult to learn?",
+    "body": "I am starting Node jorney and I wonder if it is difficult to learn",
+    "isRead": false,
+    "isEdited": false,
+    "uid": "62dfe15ce12ea4fcece9e9c3"   
+}

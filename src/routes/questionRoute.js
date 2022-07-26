@@ -1,7 +1,12 @@
 const router = require('express').Router();
 const { privateAuth } = require('../controller/userController');
 const { validateData } = require('../middleware/dataValidation');
-const { getAllQuestions, addQuestion } = require('../model/questionModel');
+const {
+  getAllQuestions,
+  addQuestion,
+  deleteQuestion,
+  updateQuestion,
+} = require('../model/questionModel');
 
 router.get('/', async (req, res) => {
   try {
@@ -20,6 +25,29 @@ router.post('/', privateAuth, validateData, async (req, res) => {
     res.status(200).json(resdata);
   } catch (err) {
     console.log('/questions POST route error', err);
+    res.status(500).json('Something went wrong');
+  }
+});
+
+router.delete('/:id', privateAuth, async (req, res) => {
+  const { id } = req.params;
+  try {
+    const resdata = await deleteQuestion(id);
+    res.status(200).json(resdata);
+  } catch (err) {
+    console.log('/questions DELETE route error', err);
+    res.status(500).json('Something went wrong');
+  }
+});
+
+router.put('/:id', privateAuth, validateData, async (req, res) => {
+  const questionData = req.body;
+  const { id } = req.params;
+  try {
+    const resdata = await updateQuestion(questionData, id);
+    res.status(200).json(resdata);
+  } catch (err) {
+    console.log('/questions UPDATE route error', err);
     res.status(500).json('Something went wrong');
   }
 });
