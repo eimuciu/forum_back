@@ -13,8 +13,8 @@ POST http://localhost:3001/user/login
 Content-Type: application/json
 
 {
-    "email": "hello@email.com",
-    "password": "hellohello"
+    "email": "goodbye@email.com",
+    "password": "goodbyegoodbye"
 }
 
 ###
@@ -28,11 +28,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGZlMTAxZ
 Content-Type: application/json
 
 {
-    "title": "my title",
-    "body": "blahnah",
-    "isRead": false,
-    "isEdited": false,
-    "uid": "62dfe15ce12ea4fcece9e9c3"
+"body": "For me it took a little bit less",
+      "isEdited": false,
+      "likes": [],
+      "qid": "62dfdea4c7a4453c21d09775",
+      "uid": "62dfe15ce12ea4fcece9e9c3",
+      "dislikes": []
 }
 
 ###
@@ -53,3 +54,11 @@ Content-Type: application/json
     "isEdited": false,
     "uid": "62dfe15ce12ea4fcece9e9c3"   
 }
+
+###
+
+GET http://localhost:3001/questions/62dfdea4c7a4453c21d09775/answers
+
+###
+### NEED TO IMPLEMENT THIS NOW
+POST http://localhost:3001/questions/62dfdea4c7a4453c21d09775/answers

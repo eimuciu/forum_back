@@ -7,6 +7,7 @@ const {
   deleteQuestion,
   updateQuestion,
 } = require('../model/questionModel');
+const { getAnswersByQuestion } = require('../model/answerModel');
 
 router.get('/', async (req, res) => {
   try {
@@ -25,6 +26,17 @@ router.post('/', privateAuth, validateData, async (req, res) => {
     res.status(200).json(resdata);
   } catch (err) {
     console.log('/questions POST route error', err);
+    res.status(500).json('Something went wrong');
+  }
+});
+
+router.get('/:id/answers', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const resdata = await getAnswersByQuestion(id);
+    res.status(200).json(resdata);
+  } catch (err) {
+    console.log('/:id/answers GET route error', err);
     res.status(500).json('Something went wrong');
   }
 });
