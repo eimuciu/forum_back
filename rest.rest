@@ -60,8 +60,27 @@ Content-Type: application/json
 GET http://localhost:3001/questions/62dfdea4c7a4453c21d09775/answers
 
 ###
-### NEED TO IMPLEMENT THIS NOW
 POST http://localhost:3001/questions/62dfdea4c7a4453c21d09775/answers
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGZlMTVjZTEyZWE0ZmNlY2U5ZTljMyIsImlhdCI6MTY1ODkwNDY0MSwiZXhwIjoxNjU4OTA4MjQxfQ.zGvF1oIOpNRFFZiZNL2GZec0rLjCeiHcxoDMqcklHUo
+Content-Type: application/json
+
+{
+    "body": "answer num1",
+    "isEdited": false,
+    "likes": [],
+    "dislikes": [],
+    "uid": "62dfe15ce12ea4fcece9e9c3",
+    "qid": "62dfdea4c7a4453c21d09775"
+}
+
+###
+
+DELETE http://localhost:3001/answers/62e0e993de65a1cf4812e6a2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGZlMTVjZTEyZWE0ZmNlY2U5ZTljMyIsImlhdCI6MTY1ODkwNDY0MSwiZXhwIjoxNjU4OTA4MjQxfQ.zGvF1oIOpNRFFZiZNL2GZec0rLjCeiHcxoDMqcklHUo
+
+###
+
+PUT http://localhost:3001/answers/62e0e9f7de65a1cf4812e6a3
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGZlMTVjZTEyZWE0ZmNlY2U5ZTljMyIsImlhdCI6MTY1ODkwNDY0MSwiZXhwIjoxNjU4OTA4MjQxfQ.zGvF1oIOpNRFFZiZNL2GZec0rLjCeiHcxoDMqcklHUo
 Content-Type: application/json
 

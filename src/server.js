@@ -7,6 +7,7 @@ const app = express();
 // route imports
 const { userRoutes } = require('./routes/userRoute');
 const { questionRoutes } = require('./routes/questionRoute');
+const { answerRoutes } = require('./routes/answerRoute');
 
 // middleware
 app.use(cors());
@@ -15,6 +16,7 @@ app.use(express.json());
 // routes
 app.use('/user', userRoutes);
 app.use('/questions', questionRoutes);
+app.use('/answers', answerRoutes);
 
 app.all('*', (req, res) => {
   res.status(404).send('404 Not Found');

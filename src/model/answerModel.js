@@ -39,7 +39,48 @@ async function addAnswer(answerData) {
   }
 }
 
+async function deleteAnswer(aId) {
+  try {
+    await dbClient.connect();
+    const delres = await collection.deleteOne({ _id: ObjectId(aId) });
+    if (delres.deletedCount === 1) {
+      return { success: true, msg: 'Answer deleted' };
+    }
+    return { success: false, msg: 'Deletion failed' };
+  } catch (err) {
+    console.log('deleteAnswer module error', err);
+    throw new Error('deleteAnswer module error');
+  } finally {
+    await dbClient.close();
+  }
+}
+
+async function updateAnswer(answerData, aId) {
+  try {
+    await dbClient.connect();
+    const updateres = await collection.updateOne(
+      { _id: ObjectId(aId) },
+      {
+        $set: {
+          ...answerData,
+        },
+      },
+    );
+    if (updateres.modifiedCount === 1 && updateres.matchedCount === 1) {
+      return { success: true, msg: 'Answer updated' };
+    }
+    return { success: false, msg: 'Update failed' };
+  } catch (err) {
+    console.log('updateAnswer module error', err);
+    throw new Error('updateAnswer module error');
+  } finally {
+    await dbClient.close();
+  }
+}
+
 module.exports = {
   getAnswersByQuestion,
   addAnswer,
+  deleteAnswer,
+  updateAnswer,
 };

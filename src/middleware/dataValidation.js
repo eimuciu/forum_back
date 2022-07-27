@@ -35,6 +35,9 @@ async function validateData(req, res, next) {
     if (baseUrl === '/questions') {
       data = await questionsschema.validateAsync(data);
     }
+    if (baseUrl === '/answers') {
+      data = await answersschema.validateAsync(data);
+    }
 
     req.body = data;
     next();
