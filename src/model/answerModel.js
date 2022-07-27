@@ -16,6 +16,30 @@ async function getAnswersByQuestion(qId) {
   }
 }
 
+async function addAnswer(answerData) {
+  answerData.uid = ObjectId(answerData.uid);
+  answerData.qid = ObjectId(answerData.qid);
+  try {
+    await dbClient.connect();
+    const dbres = await collection.insertOne(answerData);
+    if (dbres.acknowledged) {
+      const findAnswer = await collection.findOne({
+        _id: dbres.insertedId,
+      });
+      if (findAnswer) {
+        return { success: true, msg: 'Data inserted', data: findAnswer };
+      }
+    }
+    return { success: false, msg: 'Insertion failed. Try again' };
+  } catch (err) {
+    console.log('addAnswer module error', err);
+    throw new Error('addAnswer module error');
+  } finally {
+    await dbClient.close();
+  }
+}
+
 module.exports = {
   getAnswersByQuestion,
+  addAnswer,
 };
