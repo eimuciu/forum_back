@@ -24,16 +24,16 @@ GET http://localhost:3001/questions
 ###
 
 POST http://localhost:3001/questions
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGZlMTAxZTEyZWE0ZmNlY2U5ZTljMiIsImlhdCI6MTY1ODg0OTQxNywiZXhwIjoxNjU4ODUzMDE3fQ.-A5Wp0HRYCNB3726GJefhb7nrikr58fz1Dy2X2TiBOQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGZlMTVjZTEyZWE0ZmNlY2U5ZTljMyIsImlhdCI6MTY1ODkwOTg5NCwiZXhwIjoxNjU4OTEzNDk0fQ.K1jDosZ26KCUDpg68jkX-UPithrsdcCh-2TkdHPI1ro
 Content-Type: application/json
 
 {
-"body": "For me it took a little bit less",
-      "isEdited": false,
-      "likes": [],
-      "qid": "62dfdea4c7a4453c21d09775",
-      "uid": "62dfe15ce12ea4fcece9e9c3",
-      "dislikes": []
+    "title": "Is Node difficult to learn? 2",
+    "body": "I am starting Node jorney and I wonder if it is difficult to learn",
+    "isRead": false,
+    "isEdited": false,
+    "uid": "62dfe15ce12ea4fcece9e9c3",
+    "createdAt": 1658910297018
 }
 
 ###
@@ -48,7 +48,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGZlMTAxZ
 Content-Type: application/json
 
 {
-    "title": "Is Node difficult to learn?",
+    "title": "Is Node difficult to learn? 2",
     "body": "I am starting Node jorney and I wonder if it is difficult to learn",
     "isRead": false,
     "isEdited": false,

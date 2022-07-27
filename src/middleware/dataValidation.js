@@ -8,6 +8,8 @@ const questionsschema = joi
     isRead: joi.boolean().required(),
     isEdited: joi.boolean().required(),
     uid: joi.string().trim().required(),
+    createdAt: joi.date().timestamp('javascript').required(),
+    editedAt: joi.date().timestamp('javascript'),
   })
   .options({ abortEarly: false });
 
@@ -19,6 +21,8 @@ const answersschema = joi
     dislikes: joi.array().required(),
     uid: joi.string().trim().required(),
     qid: joi.string().trim().required(),
+    createdAt: joi.date().timestamp('javascript').required(),
+    editedAt: joi.date().timestamp('javascript'),
   })
   .options({ abortEarly: false });
 
