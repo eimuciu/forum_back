@@ -62,7 +62,10 @@ async function updateAnswer(answerData, aId) {
       { _id: ObjectId(aId) },
       {
         $set: {
-          ...answerData,
+          body: answerData.body,
+          dislikes: answerData.dislikes,
+          isEdited: answerData.isEdited,
+          likes: answerData.likes,
         },
       },
     );

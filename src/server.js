@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const morgan = require('morgan');
 const { PORT } = require('./config');
 
 const app = express();
@@ -12,6 +13,7 @@ const { answerRoutes } = require('./routes/answerRoute');
 // middleware
 app.use(cors());
 app.use(express.json());
+app.use(morgan('dev'));
 
 // routes
 app.use('/user', userRoutes);

@@ -14,7 +14,12 @@ async function findUser(credentials) {
     }
     if (comparehash(password, userExist.hashedpsw)) {
       const token = signtoken({ id: userExist._id });
-      return { success: true, msg: 'Success login', token };
+      return {
+        success: true,
+        msg: 'Success login',
+        token,
+        data: { email: userExist.email, _id: userExist._id },
+      };
     }
     return { success: false, msg: 'Check email or password' };
   } catch (err) {
