@@ -7,7 +7,10 @@ async function getAnswersByQuestion(qId) {
   try {
     await dbClient.connect();
     const answersData = await collection.find({ qid: ObjectId(qId) }).toArray();
-    return { success: true, msg: 'Data retrieved', data: answersData };
+    const dataToReturn = answersData.sort((a, b) =>
+      a.createdAt < b.createdAt ? 1 : -1,
+    );
+    return { success: true, msg: 'Data retrieved', data: dataToReturn };
   } catch (err) {
     console.log('getAnswersByQuestion module error', err);
     throw new Error('getAnswersByQuestion module error');
@@ -56,16 +59,15 @@ async function deleteAnswer(aId) {
 }
 
 async function updateAnswer(answerData, aId) {
+  const { _id, createdAt, qid, uid, ...rest } = answerData;
+  console.log(rest);
   try {
     await dbClient.connect();
     const updateres = await collection.updateOne(
       { _id: ObjectId(aId) },
       {
         $set: {
-          body: answerData.body,
-          dislikes: answerData.dislikes,
-          isEdited: answerData.isEdited,
-          likes: answerData.likes,
+          ...rest,
         },
       },
     );

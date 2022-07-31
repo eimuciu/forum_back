@@ -2,12 +2,43 @@ const { dbClient } = require('../config');
 const { ObjectId } = require('mongodb');
 
 const collection = dbClient.db('forum_db').collection('questions');
+const answersCollection = dbClient.db('forum_db').collection('answers');
+
+// async function getAllQuestions() {
+//   try {
+//     await dbClient.connect();
+//     const questionsData = await collection.find().toArray();
+//     return { success: true, msg: 'Data retrieved', data: questionsData };
+//   } catch (err) {
+//     console.log('findGroups module error', err);
+//     throw new Error('findGroups module error');
+//   } finally {
+//     await dbClient.close();
+//   }
+// }
 
 async function getAllQuestions() {
   try {
     await dbClient.connect();
-    const questionsData = await collection.find().toArray();
-    return { success: true, msg: 'Data retrieved', data: questionsData };
+    const questionsData = await collection
+      .aggregate([
+        {
+          $lookup: {
+            from: 'answers',
+            localField: '_id',
+            foreignField: 'qid',
+            as: 'answers',
+          },
+        },
+      ])
+      .toArray();
+    const dataToReturn = questionsData
+      .map((qObj) => ({
+        ...qObj,
+        answers: qObj.answers.length,
+      }))
+      .sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1));
+    return { success: true, msg: 'Data retrieved', data: dataToReturn };
   } catch (err) {
     console.log('findGroups module error', err);
     throw new Error('findGroups module error');
@@ -42,7 +73,10 @@ async function deleteQuestion(qId) {
   try {
     await dbClient.connect();
     const delres = await collection.deleteOne({ _id: ObjectId(qId) });
-    if (delres.deletedCount === 1) {
+    const delAnsRes = await answersCollection.deleteMany({
+      qid: ObjectId(qId),
+    });
+    if (delres.deletedCount === 1 && delAnsRes.acknowledged) {
       return { success: true, msg: 'Question deleted' };
     }
     return { success: false, msg: 'Deletion failed' };
@@ -55,13 +89,14 @@ async function deleteQuestion(qId) {
 }
 
 async function updateQuestion(questionData, qId) {
+  const { _id, createdAt, uid, ...rest } = questionData;
   try {
     await dbClient.connect();
     const updateres = await collection.updateOne(
       { _id: ObjectId(qId) },
       {
         $set: {
-          ...questionData,
+          ...rest,
         },
       },
     );
