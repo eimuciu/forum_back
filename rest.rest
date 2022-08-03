@@ -1,0 +1,94 @@
+#CTRL+ALT+R
+POST http://localhost:3001/user/register
+Content-Type: application/json
+
+{
+    "email": "goodbye@email.com",
+    "password": "goodbyegoodbye"
+}
+
+###
+
+POST http://localhost:3001/user/login
+Content-Type: application/json
+
+{
+    "email": "goodbye@email.com",
+    "password": "goodbyegoodbye"
+}
+
+###
+
+GET http://localhost:3001/questions
+
+###
+
+POST http://localhost:3001/questions
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGZlMTVjZTEyZWE0ZmNlY2U5ZTljMyIsImlhdCI6MTY1ODkwOTg5NCwiZXhwIjoxNjU4OTEzNDk0fQ.K1jDosZ26KCUDpg68jkX-UPithrsdcCh-2TkdHPI1ro
+Content-Type: application/json
+
+{
+    "title": "Is Node difficult to learn? 2",
+    "body": "I am starting Node jorney and I wonder if it is difficult to learn",
+    "isRead": false,
+    "isEdited": false,
+    "uid": "62dfe15ce12ea4fcece9e9c3",
+    "createdAt": 1658910297018
+}
+
+###
+
+DELETE http://localhost:3001/questions/62e00b065dcb3096e9c44b36
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGZlMTAxZTEyZWE0ZmNlY2U5ZTljMiIsImlhdCI6MTY1ODg0OTQxNywiZXhwIjoxNjU4ODUzMDE3fQ.-A5Wp0HRYCNB3726GJefhb7nrikr58fz1Dy2X2TiBOQ
+
+###
+
+PUT http://localhost:3001/questions/62e00bb94c0b1ae77d25fd61
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGZlMTAxZTEyZWE0ZmNlY2U5ZTljMiIsImlhdCI6MTY1ODg0OTQxNywiZXhwIjoxNjU4ODUzMDE3fQ.-A5Wp0HRYCNB3726GJefhb7nrikr58fz1Dy2X2TiBOQ
+Content-Type: application/json
+
+{
+    "title": "Is Node difficult to learn? 2",
+    "body": "I am starting Node jorney and I wonder if it is difficult to learn",
+    "isRead": false,
+    "isEdited": false,
+    "uid": "62dfe15ce12ea4fcece9e9c3"   
+}
+
+###
+
+GET http://localhost:3001/questions/62dfdea4c7a4453c21d09775/answers
+
+###
+POST http://localhost:3001/questions/62dfdea4c7a4453c21d09775/answers
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGZlMTVjZTEyZWE0ZmNlY2U5ZTljMyIsImlhdCI6MTY1ODkwNDY0MSwiZXhwIjoxNjU4OTA4MjQxfQ.zGvF1oIOpNRFFZiZNL2GZec0rLjCeiHcxoDMqcklHUo
+Content-Type: application/json
+
+{
+    "body": "answer num1",
+    "isEdited": false,
+    "likes": [],
+    "dislikes": [],
+    "uid": "62dfe15ce12ea4fcece9e9c3",
+    "qid": "62dfdea4c7a4453c21d09775"
+}
+
+###
+
+DELETE http://localhost:3001/answers/62e0e993de65a1cf4812e6a2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGZlMTVjZTEyZWE0ZmNlY2U5ZTljMyIsImlhdCI6MTY1ODkwNDY0MSwiZXhwIjoxNjU4OTA4MjQxfQ.zGvF1oIOpNRFFZiZNL2GZec0rLjCeiHcxoDMqcklHUo
+
+###
+
+PUT http://localhost:3001/answers/62e0e9f7de65a1cf4812e6a3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGZlMTVjZTEyZWE0ZmNlY2U5ZTljMyIsImlhdCI6MTY1ODkwNDY0MSwiZXhwIjoxNjU4OTA4MjQxfQ.zGvF1oIOpNRFFZiZNL2GZec0rLjCeiHcxoDMqcklHUo
+Content-Type: application/json
+
+{
+    "body": "answer num1",
+    "isEdited": false,
+    "likes": [],
+    "dislikes": [],
+    "uid": "62dfe15ce12ea4fcece9e9c3",
+    "qid": "62dfdea4c7a4453c21d09775"
+}
