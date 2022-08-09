@@ -4,7 +4,7 @@
   "description": "Forum API",
   "main": "src/server.js",
   "scripts": {
-    "start": "nodemon src/server.js"
+    "start": "node src/server.js"
   },
   "keywords": [],
   "author": "",
